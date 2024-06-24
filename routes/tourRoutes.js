@@ -1,11 +1,15 @@
 const express = require('express');
 const tourController = require('./../controllers/tourControllers');
 const authController = require('../controllers/authController');
-
+const reviewRouter = require('../routes/reviewRoutes');
 const router = express.Router();
 
 //now this is our param middleware, checks for every id.
 // router.param('id', tourController.checkId);
+
+// POST /tour/23489dfjkdf/reviews
+// POST /reviews
+router.use('/:tourId/reviews', reviewRouter);
 
 router
     .route('/top-5-cheap')
